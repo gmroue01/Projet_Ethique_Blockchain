@@ -1,38 +1,1283 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Projet Éthique & Blockchain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a4d2e;
+            --accent-color: #ff9f29;
+            --bg-color: #f8f9f2;
+            --text-color: #2d2d2d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 1.5rem; }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover { color: var(--accent-color) !important; }
+
+        section { padding: 100px 0; }
+
+        hr { border-top: 1px solid rgba(26, 77, 46, 0.1); margin: 0; }
+
+        .cadre {
+            background: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            height: 100%;
+        }
+
+        .cadre h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .content-text { color: #4a4a4a; font-size: 0.95rem; }
+
+        .content-text h4 {
+            color: var(--primary-color);
+            margin-top: 25px;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .content-text ul { list-style: none; padding-left: 0; }
+
+        .content-text li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-text li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Onglets */
+        .nav-tabs .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 600;
+            border: none;
+            border-bottom: 3px solid transparent;
+            border-radius: 0;
+            padding: 12px 20px;
+            margin: 0;
+        }
+
+        .nav-tabs .nav-link:hover {
+            color: var(--primary-color) !important;
+            border-bottom-color: var(--accent-color);
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color) !important;
+            background: transparent;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .nav-tabs { border-bottom: 2px solid rgba(26,77,46,0.15); }
+
+        .tab-panel-content {
+            background: white;
+            border-radius: 0 0 20px 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .blockquote-custom {
+            border-left: 4px solid var(--accent-color);
+            padding: 12px 20px;
+            background: rgba(255,159,41,0.05);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            margin: 24px 0;
+        }
+
+        .table thead th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .badge-socrate       { background-color: #7d5a00; color: white; }
+        .badge-utilitarisme  { background-color: #d35400; color: white; }
+        .badge-heidegger     { background-color: #c0392b; color: white; }
+        .badge-kant          { background-color: #1e8449; color: white; }
+        .badge-ubuntu        { background-color: #7d3c98; color: white; }
+        .badge-simondon      { background-color: #2471a3; color: white; }
+
+        .summary-card { border-radius: 16px; padding: 24px; height: 100%; }
+
+        footer { background: var(--primary-color); color: white; padding: 50px 0; }
+        footer a { color: var(--accent-color); }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid" color="cyan-500">
-            <a class="navbar-brand">Ethique</a>
-            <a class="navbar-brand" href="#">Quelle question on se pose ?</a>
-            <a class="navbar-brand" href="#">De quoi on parle ?</a>
-            <a class="navbar-brand" href="">3 voix principales</a>
-            <a class="navbar-brand" href="#">Autres voix</a>
-            <a class="navbar-brand" href="">Conclusion éthique</a>
-            <a class="navbar-brand" href="">Source</a>
-            <a class="navbar-brand" href="">Equipe</a>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">ÉTHIQUE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#voix-principales">3 Voix</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#autres-voix">Autres Voix</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cas-concrets">Cas Concrets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#conclusion">Conclusion</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sources">Sources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#lexique">Lexique</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#equipe">Équipe</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="container ">
-        <div class="card shadow">
-            <div class="card-body">
-                Blockchain : Comment les mineurs et validateurs peuvent-ils garantir l'éthique du
-                réseau si celui-ci est utilisé pour des transactions moralement condamnables ?
+    <div class="container">
+
+        <!-- ═══ ACCUEIL ═══ -->
+        <section id="accueil" class="text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <p class="text-uppercase fw-semibold small mb-3" style="color: var(--accent-color); letter-spacing: 2px;">Dissertation Éthique</p>
+                    <h1>Le dilemme éthique des cryptomonnaies</h1>
+                    <p class="lead text-muted mb-5">Ce que la blockchain fait aux humains et aux sociétés — au-delà du code.</p>
+                    <div class="cadre" style="cursor: default;">
+                        <p class="fs-5 fst-italic mb-3">
+                            « À quel point les mineurs et les validateurs sont-ils responsables de l'éthique
+                            du réseau si celui-ci est utilisé pour des transactions moralement condamnables ? »
+                        </p>
+                        <p class="text-muted small mb-0">
+                            La blockchain est un réseau sans autorité centrale où chaque requête doit être vérifiée
+                            par un <strong>mineur</strong> ou un <strong>validateur</strong>, rémunéré en
+                            cryptomonnaie native (<em>gas fees</em>). Si ces acteurs permettent techniquement
+                            des transactions sans en connaître l'origine réelle, dans quelle mesure peuvent-ils
+                            être tenus moralement responsables lorsque le réseau sert des activités condamnables ?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- ═══ 3 VOIX PRINCIPALES ═══ -->
+        <section id="voix-principales">
+            <div class="text-center mb-5">
+                <h2>Les 3 Voix Principales</h2>
+                <p class="text-muted">Trois grandes lectures philosophiques de la responsabilité</p>
+            </div>
+
+            <ul class="nav nav-tabs" id="voixPrincipalesTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tab-aristote" data-bs-toggle="tab"
+                        data-bs-target="#pane-aristote" type="button" role="tab">
+                        Voix 1 — Aristote
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-utilitarisme" data-bs-toggle="tab"
+                        data-bs-target="#pane-utilitarisme" type="button" role="tab">
+                        Voix 2 — Utilitarisme
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-kant" data-bs-toggle="tab"
+                        data-bs-target="#pane-kant" type="button" role="tab">
+                        Voix 3 — Kant
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="voixPrincipalesContent">
+
+                <!-- ARISTOTE -->
+                <div class="tab-pane fade show active tab-panel-content" id="pane-aristote" role="tabpanel">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge badge-socrate me-3 px-3 py-2 fs-6">Aristote</span>
+                        <h3 class="mb-0">La techné et la phronèsis face à la blockchain</h3>
+                    </div>
+
+                    <p>Aristote distingue plusieurs formes de savoir. La <strong>techné</strong> (τέχνη) désigne le
+                        savoir productif — l'art de bien faire une chose. La <strong>phronèsis</strong> (φρόνησις),
+                        la sagesse pratique, est la capacité à discerner ce qui est juste dans une situation
+                        particulière. Sans phronèsis pour l'orienter, la techné reste aveugle au bien qu'elle devrait
+                        servir. C'est précisément cette tension qui structure la question de la responsabilité
+                        des mineurs et des validateurs.</p>
+
+                    <div class="content-text">
+                        <h4>I. La techné du mineur : savoir-faire sans sagesse ?</h4>
+                        <p>Le mineur ou le validateur possède une techné : il maîtrise les algorithmes de consensus,
+                            gère ses équipements, optimise sa participation au réseau. Aristote reconnaîtrait cette
+                            compétence comme une forme de savoir légitime. Mais il poserait immédiatement la question
+                            de sa finalité : <em>vers quel bien cette techné est-elle orientée ?</em></p>
+                        <p>Pour Aristote, toute techné vise un bien (<em>to agathon</em>). L'art du médecin vise
+                            la santé ; l'art du stratège vise la victoire. La techné du validateur vise la sécurité
+                            et la fiabilité du réseau — c'est-à-dire des échanges justes et vérifiables. Un validateur
+                            qui permet techniquement des échanges injustes trahit donc la finalité même de
+                            sa techné.</p>
+
+                        <h4>II. La phronèsis comme exigence éthique du validateur</h4>
+                        <p>La phronèsis n'est pas une règle à appliquer mécaniquement : c'est la capacité à juger
+                            ce qui est bien dans une situation concrète, en tenant compte du contexte, des personnes
+                            impliquées et des conséquences. Aristote la situe au cœur de l'action morale — sans elle,
+                            ni la loi ni la technique ne suffisent.</p>
+                        <p>Le validateur qui se contente d'exécuter le protocole sans jamais questionner la nature
+                            des transactions qu'il valide manque de phronèsis. Il réduit sa pratique à une
+                            techné pure — un savoir-faire sans sagesse — ce qu'Aristote associe précisément
+                            à la figure de l'esclave, celui qui exécute sans délibérer. Le validateur vertueux,
+                            lui, délibère : il se demande si son action contribue à l'<strong>eudaimonia</strong>
+                            (le florissement humain) de la communauté à laquelle il appartient.</p>
+
+                        <div class="blockquote-custom">
+                            « Toute techné et toute recherche, toute action et tout choix, semblent tendre vers
+                            quelque bien. »
+                            <footer class="blockquote-footer mt-1">Aristote, <em>Éthique à Nicomaque</em>, I, 1</footer>
+                        </div>
+
+                        <h4>III. Le validateur comme citoyen de la blockchain-polis</h4>
+                        <p>Aristote définit l'homme comme un <em>zôon politikon</em> — un animal politique, fait
+                            pour vivre en communauté. La blockchain crée une nouvelle forme de communauté, une
+                            sorte de <strong>polis numérique</strong> gouvernée par des règles partagées. Le mineur
+                            n'y est pas un simple technicien anonyme : il est un membre de cette cité, avec des
+                            devoirs civiques réels.</p>
+                        <p>Dans la polis aristotélicienne, le bon citoyen n'obéit pas aveuglément aux lois — il
+                            contribue à leur élaboration et à leur amélioration. De même, le validateur vertueux
+                            ne se contente pas d'appliquer le protocole : il participe à la gouvernance du réseau,
+                            vote sur les forks, propose des améliorations, et refuse de valider ce qui contredit
+                            la finalité commune de la blockchain-polis.</p>
+
+                        <h4>IV. La mésotès : ni censure arbitraire ni neutralité aveugle</h4>
+                        <p>Aristote définit la vertu comme un <strong>juste milieu</strong> (<em>mésotès</em>) entre
+                            deux vices opposés : l'excès et le défaut. Appliquée à notre question, la vertu du
+                            validateur se situe entre deux postures également fautives :</p>
+                        <ul>
+                            <li><strong>Le défaut :</strong> la neutralité absolue — valider tout sans discernement,
+                                au nom d'un protocol aveugle. C'est la techné sans phronèsis.</li>
+                            <li><strong>L'excès :</strong> la censure arbitraire — filtrer les transactions selon
+                                ses préférences personnelles, au mépris du consensus. C'est l'hubris du validateur
+                                qui se croit seul juge.</li>
+                            <li><strong>La vertu :</strong> une régulation collective et délibérée, fondée sur
+                                des normes partagées, orientée vers le bien commun de la polis numérique.</li>
+                        </ul>
+                        <p class="fw-semibold">Pour Aristote, la responsabilité du mineur n'est ni technique
+                            ni purement individuelle : elle est celle d'un citoyen vertueux qui met sa techné au
+                            service de l'eudaimonia collective, guidé par la phronèsis plutôt que par le seul
+                            algorithme.</p>
+
+                        <h4>V. MacIntyre, Confucius et Comte-Sponville : trois prolongements</h4>
+                        <p>Alasdair <strong>MacIntyre</strong> distingue deux types de biens auxquels aspire tout
+                            pratiquant. Les <em>biens externes</em> — argent, prestige, récompenses contingentes —
+                            peuvent pousser à tricher : valider n'importe quelle transaction pour maximiser les
+                            gas fees. Les <em>biens internes</em> sont l'excellence propre à la pratique elle-même :
+                            pour le validateur, c'est la contribution à un réseau de confiance, la maîtrise du
+                            consensus, la participation à une infrastructure qui sert réellement la communauté.
+                            Un validateur uniquement motivé par les biens externes trahit sa propre croissance
+                            morale et la finalité de sa pratique.</p>
+                        <p><strong>Confucius</strong> nomme <em>Junzi</em> l'homme vertueux qui respecte les rites
+                            (<em>Li</em>) structurant l'harmonie sociale. Le protocole blockchain est une forme de
+                            <em>Li</em> numérique : un ensemble de règles partagées garantissant l'ordre des
+                            échanges. Mais le Junzi ne suit pas les rites aveuglément — il en comprend la finalité,
+                            l'harmonie (<em>He</em>). Si le rite est détourné au service de la désharmonie, le
+                            validateur-Junzi doit s'interroger sur la légitimité de sa participation. La visée de
+                            l'harmonie communautaire prime sur la lettre aveugle du protocole.</p>
+                        <p><strong>André Comte-Sponville</strong> fait de la <em>politesse</em> la vertu première,
+                            car elle crée la distance nécessaire pour reconnaître la valeur de l'autre. Dans la
+                            blockchain anonyme, l'autre est invisible — il n'est qu'une adresse hexadécimale.
+                            La politesse numérique du validateur, c'est précisément cette capacité à reconnaître
+                            que derrière chaque adresse se trouve peut-être une personne — victime potentielle
+                            ou bénéficiaire. Sans cette reconnaissance minimale de l'altérité, aucune vertu
+                            ne peut s'exercer.</p>
+                    </div>
+                </div>
+
+                <!-- UTILITARISME -->
+                <div class="tab-pane fade tab-panel-content" id="pane-utilitarisme" role="tabpanel">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge badge-utilitarisme me-3 px-3 py-2 fs-6">Utilitarisme</span>
+                        <h3 class="mb-0">Le calcul du bien commun face à la validation</h3>
+                    </div>
+
+                    <p>L'éthique des valeurs, ou <strong>conséquentialisme</strong>, évalue la moralité d'une action
+                        uniquement en fonction de ses résultats. Sa question fondamentale n'est pas <em>« Qui dois-je
+                        être ? »</em> mais <em>« Quelles sont les conséquences de mon acte pour le plus grand
+                        nombre ? »</em> Appliquée aux mineurs et validateurs, elle pose un calcul redoutable :
+                        les gas fees encaissés pèsent-ils plus lourd que les souffrances générées par la
+                        transaction validée ?</p>
+
+                    <div class="content-text">
+                        <h4>I. Bentham et l'algèbre de l'utilité</h4>
+                        <p>Jeremy Bentham pose le principe fondateur : <em>« le plus grand bonheur pour le plus
+                            grand nombre. »</em> La valeur morale d'un acte se mesure par un calcul rationnel pesant
+                            plaisirs et douleurs selon sept critères : durée, intensité, certitude, proximité,
+                            fécondité, pureté et <strong>étendue</strong>.</p>
+
+                        <div class="blockquote-custom">
+                            « La nature a placé l'humanité sous le gouvernement de deux maîtres souverains : la
+                            douleur et le plaisir. C'est à eux seuls qu'il appartient de nous indiquer ce que
+                            nous devons faire. »
+                            <footer class="blockquote-footer mt-1">Jeremy Bentham, <em>Introduction aux principes
+                                de morale et de législation</em>, 1789</footer>
+                        </div>
+
+                        <p>Appliqué au validateur, le calcul est implacable. D'un côté : les gas fees — un plaisir
+                            immédiat, certain, mais d'une <em>étendue</em> minimale (seul le validateur en profite).
+                            De l'autre : les dommages causés par une transaction finançant un trafic d'êtres humains
+                            ou un attentat — une douleur intense, durable, certaine, et d'une étendue massive
+                            (des dizaines ou centaines de victimes). Le bilan utilitariste est sans ambiguïté.
+                            Bentham ajoute le principe d'<strong>impartialité</strong> : chaque personne compte de
+                            manière égale. Les victimes potentielles comptent autant que le validateur — les ignorer
+                            pour maximiser ses gains viole le fondement même du calcul.</p>
+
+                        <h4>II. Mill : la hiérarchie des plaisirs et l'utilitarisme de la règle</h4>
+                        <p>John Stuart Mill enrichit Bentham en introduisant une <strong>hiérarchie qualitative</strong> :
+                            les plaisirs supérieurs (développement de l'intellect, contribution à un bien commun)
+                            valent intrinsèquement plus que les plaisirs inférieurs (satisfaction financière
+                            immédiate). Un validateur qui encaisse des gas fees issus d'activités criminelles
+                            choisit délibérément le plaisir inférieur.</p>
+                        <ul>
+                            <li>La <strong>confiance dans le réseau</strong> est un bien supérieur : elle fonde
+                                l'inclusion financière, la transparence et les échanges légitimes pour des millions
+                                d'utilisateurs.</li>
+                            <li>Les <strong>gas fees d'une transaction illicite</strong> sont un bien inférieur :
+                                ils ne profitent qu'au validateur au détriment du bien collectif.</li>
+                        </ul>
+                        <p>Mill introduit également l'<strong>utilitarisme de la règle</strong> : plutôt que de
+                            calculer l'utilité transaction par transaction, il faut établir des règles générales
+                            dont l'application systématique maximise le bien-être global. La règle collective
+                            <em>« ne pas valider les transactions explicitement liées à des crimes contre la
+                            dignité humaine »</em>, si elle est appliquée par tous les validateurs, produit un
+                            réseau plus sûr et plus fiable — fondant la confiance sociale sur laquelle repose
+                            toute l'utilité de la blockchain.</p>
+
+                        <h4>III. Nozick : la critique de la satisfaction aveugle</h4>
+                        <p>Robert Nozick propose la <strong>machine à expérience</strong> : si l'on vous branchait
+                            à un dispositif qui stimule votre cerveau pour vous donner l'illusion d'une vie parfaite,
+                            accepteriez-vous ? La plupart refusent — parce que l'humain ne cherche pas seulement
+                            le plaisir, mais l'<em>authenticité</em> de son expérience et de sa contribution
+                            au monde.</p>
+                        <p>Appliquée au validateur : celui qui tire satisfaction de ses gas fees tout en permettant
+                            des transactions destructrices ressemble à quelqu'un branché à cette machine. Il ressent
+                            un plaisir réel, mais sa contribution au monde est négative. L'<strong>authenticité</strong>
+                            — construire réellement un réseau de confiance — vaut plus que la satisfaction immédiate
+                            d'une récompense gagnée dans l'indifférence morale.</p>
+
+                        <h4>IV. Conclusion : le validateur comme agent du bien commun</h4>
+                        <p class="fw-semibold mb-0">L'approche utilitariste converge vers une conclusion nette :
+                            la responsabilité du mineur et du validateur est réelle et mesurable. Le calcul
+                            de Bentham produit un résultat sans ambiguïté dès lors que les transactions concernent
+                            des crimes graves. Mill renforce cette conclusion par la voie des règles collectives,
+                            et Nozick la complète en rappelant que l'authenticité de l'engagement moral importe
+                            autant que le résultat calculé. Valider aveuglément, c'est choisir le plaisir inférieur
+                            et la satisfaction illusoire au détriment du bien commun.</p>
+                    </div>
+                </div>
+
+                <!-- KANT -->
+                <div class="tab-pane fade tab-panel-content" id="pane-kant" role="tabpanel">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge badge-kant me-3 px-3 py-2 fs-6">Kant</span>
+                        <h3 class="mb-0">Le devoir et l'universalisabilité</h3>
+                    </div>
+
+                    <p>Kant, penseur de l'éthique déontologique, dépasse les conséquences pour interroger le devoir
+                        moral en lui-même. Sa question n'est pas <em>quels sont les effets de mon action ?</em>,
+                        mais <em>ma maxime peut-elle être universalisée sans contradiction ?</em></p>
+
+                    <div class="content-text">
+                        <h4>I. Le devoir de neutralité : une apparente vertu kantienne</h4>
+                        <p>À première vue, la maxime <em>« je valide toute transaction conforme au protocole »</em>
+                            est universalisable. Le validateur, comme le facteur qui achemine une lettre sans en
+                            lire le contenu, serait simplement un intermédiaire technique.</p>
+                        <ul>
+                            <li><strong>Exemple :</strong> Un mineur Bitcoin qui valide des transactions sans en
+                                connaître la destination agit de la même façon dans tous les cas, à la manière
+                                d'un juge appliquant la loi sans tenir compte de sa sympathie pour l'accusé.</li>
+                        </ul>
+
+                        <h4>II. La limite kantienne : ne jamais traiter l'humanité comme simple moyen</h4>
+                        <div class="blockquote-custom">
+                            « Agis de telle sorte que tu traites l'humanité, aussi bien dans ta personne que dans
+                            la personne de tout autre, toujours en même temps comme une fin, et jamais simplement
+                            comme un moyen. »
+                            <footer class="blockquote-footer mt-1">Kant, <em>Fondements de la métaphysique des mœurs</em></footer>
+                        </div>
+                        <p>Lorsqu'un validateur confirme une transaction finançant le trafic d'êtres humains,
+                            il rend possible un acte qui réduit des personnes à l'état de marchandises. Kant
+                            n'accepte pas l'ignorance volontaire comme excuse : ne pas chercher à savoir ce que
+                            l'on valide, alors que des mécanismes d'audit existent, est en soi une faute
+                            déontologique.</p>
+                        <ul>
+                            <li><strong>Exemple :</strong> Le réseau Ethereum a été utilisé pour financer Tornado Cash,
+                                un mixeur employé par le groupe Lazarus (Corée du Nord) pour blanchir des fonds
+                                issus de cyberattaques. Les validateurs qui ont continué après les sanctions
+                                américaines de 2022 ont failli à leur devoir moral selon Kant.</li>
+                        </ul>
+
+                        <h4>III. L'universalisabilité mise à l'épreuve : peut-on valider sélectivement ?</h4>
+                        <p>Si chaque validateur applique ses propres critères moraux, la maxime produit un réseau
+                            fragmenté — ce qui contredit le principe du consensus. Il faut donc une norme
+                            <em>collective</em> : <em>« ne pas valider les transactions explicitement liées à des
+                            crimes contre la dignité humaine »</em> — celle-là est universalisable.</p>
+                        <ul>
+                            <li><strong>Exemple :</strong> En 2023, certains pools de minage ont refusé des
+                                transactions issues d'adresses sanctionnées par l'OFAC. Du point de vue kantien,
+                                si la norme est collective, transparente et rationnellement fondée, elle
+                                est défendable.</li>
+                        </ul>
+
+                        <h4>IV. La responsabilité collective et le droit</h4>
+                        <p>Kant développe dans la <em>Métaphysique des mœurs</em> l'idée que le droit est
+                            l'expression externe de la morale. Mais il met en garde contre l'obéissance aveugle :
+                            une loi injuste n'a pas d'autorité morale. Le devoir kantien exige un
+                            <strong>jugement éclairé</strong>, pas une soumission automatique.</p>
+                        <ul>
+                            <li><strong>Exemple :</strong> Au Canada lors de la crise des camionneurs en 2022,
+                                des comptes ont été gelés par décision gouvernementale. La neutralité du validateur
+                                peut parfois être une forme de résistance éthique légitime.</li>
+                        </ul>
+
+                        <h4>V. Vers une éthique déontologique du protocole</h4>
+                        <p>Ni la neutralité absolue ni le jugement subjectif individuel ne satisfont les exigences
+                            déontologiques. Ce qu'il faut, c'est une <strong>éthique du protocole</strong> —
+                            des règles inscrites dans les normes du réseau lui-même, élaborées collectivement,
+                            transparentes et universalisables. Impersonnelle, non arbitraire, respectueuse de la
+                            dignité humaine et applicable à tous sans exception.</p>
+
+                        <h4>VI. Benjamin Constant : la limite du devoir absolu</h4>
+                        <p>Benjamin Constant formule une critique décisive de Kant : un devoir isolé de tout contexte
+                            devient destructeur. Son exemple classique — doit-on dire la vérité à un assassin qui
+                            cherche l'adresse de son ami ? — illustre l'absurdité du devoir absolu. Sa conclusion :
+                            <em>on n'a de devoir qu'envers ceux qui ont droit à ce qu'on leur doit.</em></p>
+                        <p>Appliquée au validateur : la neutralité protocolaire n'est due qu'aux utilisateurs
+                            légitimes, c'est-à-dire à ceux qui ont <em>droit</em> à la neutralité du réseau.
+                            Un réseau criminel qui exploite l'anonymat pour financer des trafics d'êtres humains
+                            n'a pas droit à cette neutralité. Le devoir de neutralité absolu devient une complicité
+                            passive. Constant offre à Kant la nuance nécessaire pour une éthique applicable dans
+                            le monde réel.</p>
+
+                        <h4>VII. Le Principisme : une grille déontologique opérationnelle</h4>
+                        <p>Beauchamp et Childress ont développé, dans le cadre de l'éthique biomédicale, un
+                            <strong>principisme</strong> articulé autour de quatre normes croisant le triangle
+                            de Paul Ricœur (JE / TU / IL) :</p>
+                        <ul>
+                            <li><strong>JE → Respect de l'autonomie :</strong> le validateur doit respecter le
+                                droit des utilisateurs légitimes à effectuer librement leurs transactions —
+                                consentement éclairé, refus de censure arbitraire.</li>
+                            <li><strong>TU → Bienfaisance et non-malfaisance :</strong> principe de sollicitude —
+                                valider ce qui fait du bien, refuser ce qui fait du mal. Le validateur ne doit pas
+                                nuire, même passivement, en devenant le rouage d'une chaîne causale destructrice.</li>
+                            <li><strong>IL → Justice :</strong> équité et non-discrimination — les règles du réseau
+                                doivent s'appliquer de façon identique à tous, sans favoritisme ni exclusion
+                                arbitraire.</li>
+                        </ul>
+                        <p class="fw-semibold mb-0">Ces normes ne se substituent pas à l'impératif catégorique —
+                            elles l'opérationnalisent. Elles donnent au validateur une grille concrète pour
+                            naviguer entre la neutralité aveugle (vice par défaut) et la censure arbitraire
+                            (vice par excès), tout en maintenant le primat de la dignité humaine.</p>
+                    </div>
+                </div>
 
             </div>
-        </div>
+        </section>
+
+        <hr>
+
+        <!-- ═══ AUTRES VOIX ═══ -->
+        <section id="autres-voix">
+            <div class="text-center mb-5">
+                <h2>Autres Voix</h2>
+                <p class="text-muted">Regards complémentaires sur l'éthique du réseau</p>
+            </div>
+
+            <ul class="nav nav-tabs" id="autresVoixTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tab-ubuntu" data-bs-toggle="tab"
+                        data-bs-target="#pane-ubuntu" type="button" role="tab">
+                        Ubuntu
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-simondon" data-bs-toggle="tab"
+                        data-bs-target="#pane-simondon" type="button" role="tab">
+                        Simondon
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-heidegger" data-bs-toggle="tab"
+                        data-bs-target="#pane-heidegger" type="button" role="tab">
+                        Heidegger
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-vitalik" data-bs-toggle="tab"
+                        data-bs-target="#pane-vitalik" type="button" role="tab">
+                        Vitalik Buterin
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-kirch" data-bs-toggle="tab"
+                        data-bs-target="#pane-kirch" type="button" role="tab">
+                        Kirchschlaeger
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="autresVoixContent">
+
+                <!-- UBUNTU -->
+                <div class="tab-pane fade show active tab-panel-content" id="pane-ubuntu" role="tabpanel">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge badge-ubuntu me-3 px-3 py-2 fs-6">Ubuntu</span>
+                        <h3 class="mb-0">La responsabilité communautaire</h3>
+                    </div>
+
+                    <p>L'application de l'éthique Ubuntu à la gouvernance d'une blockchain propose un changement
+                        de paradigme. Contrairement à une vision purement technique où le validateur est un agent
+                        neutre, l'Ubuntu impose une <strong>rationalité relationnelle</strong>.</p>
+
+                    <div class="content-text">
+                        <h4>1. Le validateur comme membre de la communauté</h4>
+                        <p>Dans l'éthique Ubuntu, un être humain authentique n'est pas un individu isolé, mais fait
+                            partie d'un monde relationnel, communautaire et sociétal.</p>
+                        <ul>
+                            <li>Le mineur ne peut pas se considérer comme une simple « machine » de calcul. Son action de validation impacte la communauté globale.</li>
+                            <li>« Je suis parce que nous sommes. » Si le réseau est utilisé pour des actes condamnables, la dignité de chaque membre est diminuée. Un validateur ne peut encaisser ses récompenses si les effets de ces transactions font des victimes.</li>
+                        </ul>
+
+                        <h4>2. La liberté comme renforcement de celle d'autrui</h4>
+                        <div class="blockquote-custom">
+                            « Être libre, ce n'est pas seulement se débarrasser de ses chaînes ; c'est vivre d'une
+                            façon qui respecte et renforce la liberté des autres. »
+                            <footer class="blockquote-footer mt-1">Nelson Mandela</footer>
+                        </div>
+                        <ul>
+                            <li>Les validateurs refusent souvent de filtrer les transactions au nom de la « liberté » du réseau.</li>
+                            <li>Si une transaction sert à opprimer autrui — financement du terrorisme, logiciel de rançon — la valider ne renforce pas la liberté, elle la détruit. Garantir l'éthique revient donc à refuser de participer à une action qui brise le lien social.</li>
+                        </ul>
+
+                        <h4>3. Primauté de l'humain sur le profit</h4>
+                        <p>L'Ubuntu s'oppose à ce que les personnes soient traitées « comme faisant partie des frais
+                            de production au même titre que les machines ».</p>
+                        <ul>
+                            <li>Un validateur qui accepte une transaction moralement condamnable uniquement pour les <em>gas fees</em> qu'elle génère agit contre l'Ubuntu.</li>
+                            <li>À l'image de Joe Moqodi qui prêtait des machines à coudre sans intérêt pour élever sa communauté, le validateur doit privilégier la dignité du réseau sur le bénéfice immédiat.</li>
+                        </ul>
+
+                        <h4>4. La validation comme action collective</h4>
+                        <p>L'anecdote des enfants qui courent vers le panier de fruits en se donnant la main
+                            illustre la coopération nécessaire.</p>
+                        <ul>
+                            <li>Un seul validateur ne peut garantir l'éthique du réseau si les autres valident
+                                ce qu'il rejette.</li>
+                            <li>Les validateurs devraient s'accorder sur des protocoles de consensus incluant
+                                des « valeurs de protection de l'humanité ». L'objectif n'est pas d'être le
+                                « premier arrivé » pour gagner la récompense, mais de s'assurer que l'ensemble
+                                du réseau progresse vers un bien commun.</li>
+                        </ul>
+
+                        <p class="mt-4 fw-semibold">En résumé, selon l'Ubuntu, un validateur garantit l'éthique
+                            en refusant la neutralité technique au profit de la sollicitude envers la communauté
+                            humaine impactée par ses calculs.</p>
+                    </div>
+                </div>
+
+                <!-- SIMONDON -->
+                <div class="tab-pane fade tab-panel-content" id="pane-simondon" role="tabpanel">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge badge-simondon me-3 px-3 py-2 fs-6">Simondon</span>
+                        <h3 class="mb-0">L'éthique de la régulation</h3>
+                    </div>
+
+                    <p>Pour Gilbert Simondon, la technique n'est jamais neutre ou isolée. Elle est un produit de
+                        l'intelligence humaine qui nécessite une <strong>culture technique</strong> pour ne pas
+                        devenir une source d'aliénation.</p>
+
+                    <div class="content-text">
+                        <h4>I. Sortir de l'aliénation : culture technique vs vision utilitariste</h4>
+                        <p>Le premier défi éthique du validateur est de ne pas traiter le réseau comme une simple
+                            « boîte noire ». Simondon distingue deux approches :</p>
+                        <ul>
+                            <li><strong>Approche « Casino » :</strong> le mineur ne s'intéresse qu'au gain financier,
+                                ignorant l'essence du protocole. Il est esclave de la machine.</li>
+                            <li><strong>Approche « Computer » :</strong> le validateur comprend que la blockchain
+                                est une réinvention de l'internet, un réseau né du besoin social de connexion
+                                sans intermédiaires.</li>
+                        </ul>
+                        <p>La blockchain est un <strong>objet de culture</strong> car elle naît de la volonté
+                            humaine de restaurer l'égalité d'accès (le <em>permissionless</em>).</p>
+
+                        <h4>II. Concrétisation et individuation du protocole</h4>
+                        <p>Un objet technique est « concret » quand ses différentes fonctions agissent en synergie.
+                            Le <strong>Proof of Stake (PoS)</strong> en est l'exemple : il intègre la sécurité
+                            directement dans la participation au réseau, faisant converger éthique environnementale
+                            et sécurité technique.</p>
+                        <ul>
+                            <li>Le <strong>Slashing</strong> : la sanction technique du validateur malveillant
+                                transforme l'honnêteté en une condition de stabilité interne. La morale devient
+                                ici un schème technique de fonctionnement.</li>
+                            <li>À l'inverse, l'<strong>immutabilité radicale</strong> peut être vue comme un manque
+                                de concrétisation : si le code permet une injustice sans possibilité d'adaptation,
+                                l'objet reste « abstrait ».</li>
+                        </ul>
+
+                        <h4>III. Le validateur : régulateur du milieu associé</h4>
+                        <p>Le <strong>milieu associé</strong> est l'environnement (le réseau) qui permet à l'objet
+                            technique de fonctionner. Des transactions moralement condamnables ne sont pas seulement
+                            un problème moral — elles sont une <em>pollution du milieu</em>. Elles attirent la
+                            censure, détruisent la confiance et menacent la survie technique du réseau.</p>
+                        <ul>
+                            <li><strong>Le Régulateur :</strong> il résout les situations d'indétermination que
+                                l'automate seul ne peut gérer.</li>
+                            <li><strong>Le Porteur de sens :</strong> en choisissant quel protocole soutenir ou
+                                quel « fork » valider, il oriente le sens éthique du réseau.</li>
+                        </ul>
+
+                        <h4>IV. Machine ouverte vs boîte noire</h4>
+                        <div class="blockquote-custom">
+                            « Garantir l'éthique du réseau, c'est s'assurer que l'on ne passe pas d'un réseau de
+                            corporations à un réseau de robots, mais que l'on maintient un espace où le code
+                            garantit la neutralité tout en restant ouvert à la régulation humaine en cas de
+                            dérive systémique. »
+                        </div>
+                        <p>L'éthique simondonienne du validateur est une éthique de la
+                            <strong>maintenance et de la régulation</strong> : il veille à ce que le réseau reste
+                            un objet de culture, ouvert et concret, au service d'un idéal de connexion sociale.</p>
+                    </div>
+                </div>
+
+                <!-- HEIDEGGER -->
+                <div class="tab-pane fade tab-panel-content" id="pane-heidegger" role="tabpanel">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge badge-heidegger me-3 px-3 py-2 fs-6">Heidegger</span>
+                        <h3 class="mb-0">L'anesthésie du jugement moral</h3>
+                    </div>
+
+                    <p>Heidegger veut montrer que la technique représente un <strong>mode de dévoilement de
+                        l'être</strong> (Gestell) qui transforme notre rapport au monde de manière irréversible.
+                        Dans cette transformation, tout objet — physique ou métaphysique — peut nous apparaître
+                        comme un <strong>stock</strong> (Bestand) d'où la technologie puise ses ressources.
+                        La blockchain est, pour Heidegger, le danger suprême : elle ne réduit pas seulement
+                        l'humain à une ressource — elle réduit ses valeurs morales d'identité et de confiance
+                        à des données calculables.</p>
+
+                    <div class="content-text">
+                        <h4>Le protocole comme Gestell : ce que la blockchain capture</h4>
+
+                        <div class="table-responsive my-4">
+                            <table class="table table-bordered align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Élément humain/naturel</th>
+                                        <th>Transformation en Bestand (Fonds)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>Richesse</strong></td><td>Liquidité (disponibilité totale pour le swap) — sort de tout contexte humain</td></tr>
+                                    <tr><td><strong>Confiance</strong></td><td>Preuve cryptographique — remplace la bienveillance par une condition quantitative</td></tr>
+                                    <tr><td><strong>Identité</strong></td><td>Adresse / DID (ressource d'authentification, non une personne)</td></tr>
+                                    <tr><td><strong>Temps</strong></td><td>Block-height (durée découpée et calculable)</td></tr>
+                                    <tr><td><strong>Vérité</strong></td><td>État du Ledger (stock de faits indiscutables — mais peut-on débattre une vérité indiscutable ?)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>L'obsolescence de la responsabilité</h4>
+                        <p>Étymologiquement, la responsabilité désigne la capacité à <em>répondre</em>. Dans la
+                            blockchain, la seule entité qui peut répondre, c'est le code. Les humains qui le
+                            maintiennent sont vus comme une ressource, non comme des personnes morales. Le validateur
+                            peut toujours dire : <em>« Je n'ai pas choisi de valider cette transaction condamnable,
+                            c'est le protocole. »</em> Et cette excuse est, techniquement, vraie.</p>
+                        <p>La blockchain instaure ainsi une <strong>anesthésie du jugement moral</strong>. Elle crée
+                            un monde « parfaitement honnête » en supprimant la possibilité de mentir. Mais si l'on
+                            ne peut plus <em>choisir</em> d'être malhonnête, est-on encore vraiment honnête ?
+                            L'honnêteté n'est plus une vertu morale mais une contrainte technique. Notre muscle
+                            du jugement éthique s'atrophie.</p>
+
+                        <div class="blockquote-custom">
+                            « Au nom de transactions fiables, consensuelles et efficaces, le protocole nous enferme
+                            dans un monde où la moralité de nos actions n'est plus un sujet. La blockchain se veut
+                            en quelque sorte <strong>anti-éthique</strong> : le pourquoi de l'action ne compte plus,
+                            c'est l'action et la technique qui importent. »
+                        </div>
+
+                        <h4>Une neutralité paradoxalement éthique ?</h4>
+                        <p>En suivant Paul Ricœur, cette neutralité pourrait agir avec « la visée de la vie bonne ».
+                            La morale est toujours teintée du contexte culturel, social et historique dans lequel
+                            elle naît — une morale née dans un État autoritaire peut être anti-morale pour une autre
+                            culture. Se mettre en retrait vis-à-vis de la moralité des actions sur la blockchain
+                            est donc une posture défendable — pour le meilleur ou pour le pire.</p>
+                        <p class="fw-semibold mb-0">La blockchain est une victoire totale de la <em>morale</em> —
+                            en tant que système de normes strictes — sur l'<em>éthique</em> en tant que
+                            questionnement libre sur la vie bonne avec et pour autrui. Elle offre la « paix »
+                            par la contrainte, là où l'humain recherche la « justice » par la responsabilité.</p>
+                    </div>
+                </div>
+
+                <!-- VITALIK BUTERIN -->
+                <div class="tab-pane fade tab-panel-content" id="pane-vitalik" role="tabpanel">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge me-3 px-3 py-2 fs-6" style="background:#555; color:white;">Vitalik Buterin</span>
+                        <h3 class="mb-0">La neutralité protocolaire comme horizon éthique</h3>
+                    </div>
+
+                    <p>Vitalik Buterin, co-fondateur d'Ethereum, offre une perspective interne précieuse sur la question de la responsabilité. Lorsque The DAO fut hacké en 2016, Buterin soutint le hard fork pour annuler les transactions frauduleuses — allant directement à l'encontre du dogme « <em>code is law</em> ». Pour lui, l'immuabilité du code n'est pas une valeur sacrée : <em>« L'immutabilité n'est pas une fin en soi, c'est un moyen au service de la confiance. »</em> Lorsque le code trahit la confiance, le jugement collectif de la communauté doit primer. En ce sens, il rejoint Simondon : la gouvernance humaine du protocole est une nécessité éthique, pas une trahison de l'idéal décentralisé.</p>
+
+                    <p>Face aux sanctions OFAC de 2022 et à la censure de Tornado Cash par les validateurs, Buterin adopte cependant une position plus nuancée. Il s'opposa à la censure au niveau des validateurs individuels, jugeant qu'elle créait une forme de capture réglementaire qui menacerait la <strong>neutralité crédible</strong> du réseau — son principe selon lequel les règles du protocole doivent s'appliquer de façon identique à tous, sans discrimination. Pour lui, si un État peut forcer des validateurs à censurer des transactions, Ethereum n'est plus un bien public neutre mais un prolongement du pouvoir étatique.</p>
+
+                    <p class="mb-0">Sa position de fond est donc la suivante : les validateurs individuels ne doivent pas être les arbitres moraux du réseau, mais la <strong>gouvernance collective du protocole</strong> — via les forks, les EIP (Ethereum Improvement Proposals) et le consensus communautaire — doit pouvoir encoder des valeurs éthiques. Il réconcilie ainsi Kant (normes universalisables) et Simondon (machine ouverte) : la réponse aux dérives n'est pas la censure individuelle mais la délibération collective inscrite dans le code.</p>
+                </div>
+
+                <!-- KIRCHSCHLAEGER -->
+                <div class="tab-pane fade tab-panel-content" id="pane-kirch" role="tabpanel">
+                    <div class="d-flex align-items-center mb-4">
+                        <span class="badge me-3 px-3 py-2 fs-6" style="background:var(--accent-color); color:white;">Kirchschlaeger (2024)</span>
+                        <h3 class="mb-0">Blockchain &amp; droits humains : l'ambiguïté fondamentale</h3>
+                    </div>
+
+                    <p>Dans son article de recherche <em>Blockchain Ethics</em> (Philosophies, 2024), Peter G. Kirchschlaeger propose une grille d'analyse ancrée dans les <strong>droits humains</strong> comme point de référence éthique universel. Sa thèse centrale : la blockchain représente un passage d'un réseau <em>intermédié</em> (banques, États, notaires) à un réseau <em>immédiat</em> — une confiance en la mathématique qui rend les intermédiaires obsolètes. C'est précisément cette suppression des intermédiaires qui crée le problème éthique central :</p>
+
+                    <div class="blockquote-custom">
+                        « La responsabilité de la blockchain repose entre les mains des entités participantes directement connectées, car il n'existe aucune institution intermédiaire pour porter cette responsabilité à leur place. »
+                        <footer class="blockquote-footer mt-1">Kirchschlaeger, <em>Blockchain Ethics</em>, 2024</footer>
+                    </div>
+
+                    <div class="content-text">
+                        <h4>Opportunités éthiques identifiées</h4>
+                        <ul>
+                            <li>Vote décentralisé et financement politique transparent, avec des modèles organisationnels résistants à la censure.</li>
+                            <li>Accès aux services bancaires pour les 2 milliards de personnes non-bancarisées dans le monde.</li>
+                            <li>Traçabilité des chaînes d'approvisionnement pour détecter les violations des droits humains, avec audit en temps réel des transactions.</li>
+                            <li>Stockage décentralisé des dossiers médicaux personnels pour des soins plus précis et autonomes.</li>
+                        </ul>
+
+                        <h4>Risques éthiques identifiés</h4>
+                        <ul>
+                            <li>Consommation énergétique du Proof of Work (~22 TWh actuels, potentiellement 125–140 TWh), équivalente à la consommation annuelle de l'Argentine — violation directe du droit à un environnement sain.</li>
+                            <li>L'anonymat facilite le blanchiment d'argent et le financement du terrorisme, deux usages qui violent les droits humains de façon directe.</li>
+                            <li>La production des équipements de minage implique des conditions de travail assimilables à l'esclavage moderne dans l'extraction des ressources.</li>
+                            <li>La transparence permanente du ledger peut exposer des données sensibles — tension directe avec le droit à la vie privée.</li>
+                        </ul>
+
+                        <h4>Conclusion de Kirchschlaeger</h4>
+                        <p class="fw-semibold mb-0">La blockchain est fondamentalement ambiguë — elle peut servir de bonnes causes comme mener à de mauvaises conséquences, selon les applications choisies. Mais une chose est certaine : <strong>la responsabilité éthique humaine ne peut pas être déléguée à la technologie elle-même.</strong> Même lorsque les humains sont exclus des chaînes de valeur automatisées, ils demeurent les acteurs moraux décisifs, car la blockchain manque d'autonomie, de liberté et de conscience morale.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- ═══ CAS CONCRETS ═══ -->
+        <section id="cas-concrets" style="background-color: #f0f4f0; margin: 0 -12px; padding: 100px 12px;">
+            <div class="text-center mb-5">
+                <h2>Cas Concrets</h2>
+                <p class="text-muted">Trois affaires réelles qui incarnent les dilemmes éthiques de la blockchain</p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- CAS 1 : Silk Road -->
+                <div class="col-lg-4">
+                    <div class="cadre h-100" style="border-top: 4px solid #7d5a00;">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge me-2 px-2 py-1" style="background:#7d5a00; color:white; font-size:0.75rem;">Aristote</span>
+                            <span class="badge px-2 py-1" style="background:#7d3c98; color:white; font-size:0.75rem;">Ubuntu</span>
+                        </div>
+                        <h3 style="font-size:1.25rem;">Silk Road<br><small class="text-muted fw-normal" style="font-size:0.85rem; font-family:'Inter',sans-serif;">2011 – 2013</small></h3>
+                        <p class="small">Le marché noir en ligne Silk Road utilisa Bitcoin pour traiter plus d'<strong>1,2 milliard de dollars</strong> de transactions illicites — drogues, armes, faux documents — avant d'être démantelé par le FBI en 2013.</p>
+                        <p class="small">Les mineurs Bitcoin qui validaient ces transactions illustrent le défaut aristotélicien : une <strong>techné</strong> sans <strong>phronèsis</strong>. Maîtrisant parfaitement le protocole de minage, ils ont néanmoins trahi la finalité de leur art — la sécurisation d'échanges justes — en participant à une chaîne causale destructrice. Aristote dirait qu'ils ont agi comme des esclaves du protocole, non comme des citoyens vertueux de la polis numérique.</p>
+                        <p class="small mb-0">L'<strong>Ubuntu</strong> le formule autrement : chaque mineur qui valide une transaction alimentant un trafic de drogues participe à la diminution de la dignité de toute la communauté. « Je suis parce que nous sommes » — si le réseau détruit, c'est chaque nœud qui détruit.</p>
+                    </div>
+                </div>
+
+                <!-- CAS 2 : DAO Hack -->
+                <div class="col-lg-4">
+                    <div class="cadre h-100" style="border-top: 4px solid #c0392b;">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge me-2 px-2 py-1" style="background:#c0392b; color:white; font-size:0.75rem;">Heidegger</span>
+                            <span class="badge px-2 py-1" style="background:#2471a3; color:white; font-size:0.75rem;">Simondon</span>
+                        </div>
+                        <h3 style="font-size:1.25rem;">Le Hack du DAO<br><small class="text-muted fw-normal" style="font-size:0.85rem; font-family:'Inter',sans-serif;">Juin 2016</small></h3>
+                        <p class="small">En juin 2016, un attaquant exploita une faille dans le code d'un fonds d'investissement décentralisé (The DAO) pour siphonner <strong>3,6 millions d'Ether</strong> (~60 millions de dollars). Le code n'avait pas menti : il avait exécuté exactement ce qui était écrit. Pourtant, la communauté Ethereum vota un <strong>hard fork</strong> pour annuler les transactions.</p>
+                        <p class="small"><strong>Heidegger</strong> aurait vu dans la position initiale — « <em>code is law</em>, les fonds sont perdus » — l'illustration parfaite de l'anesthésie morale : le protocole a remplacé le jugement humain. Le hard fork fut précisément le refus de cette anesthésie : les humains ont repris leur rôle de sujets moraux.</p>
+                        <p class="small mb-0">Pour <strong>Simondon</strong>, la communauté Ethereum a agi en régulateur du milieu associé : face à une dérive systémique, elle est intervenue pour préserver la santé de l'écosystème. Les partisans d'Ethereum Classic, qui refusèrent le fork au nom du « <em>code is law</em> », choisirent quant à eux la boîte noire plutôt que la machine ouverte.</p>
+                    </div>
+                </div>
+
+                <!-- CAS 3 : Tornado Cash -->
+                <div class="col-lg-4">
+                    <div class="cadre h-100" style="border-top: 4px solid #1e8449;">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge me-2 px-2 py-1" style="background:#1e8449; color:white; font-size:0.75rem;">Kant</span>
+                            <span class="badge px-2 py-1" style="background:#555; color:white; font-size:0.75rem;">Vitalik Buterin</span>
+                        </div>
+                        <h3 style="font-size:1.25rem;">Tornado Cash &amp; OFAC<br><small class="text-muted fw-normal" style="font-size:0.85rem; font-family:'Inter',sans-serif;">Août 2022</small></h3>
+                        <p class="small">En août 2022, le Trésor américain (OFAC) sanctionna Tornado Cash, un mixeur Ethereum utilisé notamment par le groupe Lazarus (Corée du Nord) pour blanchir <strong>455 millions de dollars</strong> issus de cyberattaques. En quelques semaines, plus de <strong>70 % des blocs Ethereum</strong> censurèrent les transactions issues d'adresses sanctionnées.</p>
+                        <p class="small"><strong>Kant</strong> y voit la tension centrale de son système : la neutralité technique cesse d'être tenable quand elle devient complicité de réification d'autrui. La norme collective adoptée par les pools — refuser les adresses OFAC — est universalisable et rationnellement fondée. Mais il met aussi en garde : une loi injuste n'a pas d'autorité morale.</p>
+                        <p class="small mb-0">C'est là que <strong>Vitalik Buterin</strong> intervient : il s'opposa publiquement à la censure au niveau des validateurs, jugeant qu'elle menaçait la neutralité fondatrice d'Ethereum. Pour lui, la réponse n'est pas individuelle mais protocolaire — le réseau doit s'auto-corriger via des mécanismes de <em>fork</em> collectif, pas via la morale de chaque validateur.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- ═══ CONCLUSION ═══ -->
+        <section id="conclusion">
+            <div class="text-center mb-5">
+                <h2>Conclusion</h2>
+                <p class="text-muted fst-italic">Vers une responsabilité partagée</p>
+            </div>
+
+            <p>La question de la responsabilité des mineurs et des validateurs ne se résout pas par un simple recours à la technique — c'est d'abord une question philosophique.</p>
+
+            <p><strong>Aristote</strong> pose d'abord la question de la finalité. Toute techné vise un bien :
+                celle du validateur vise la sécurité d'échanges justes. Un mineur qui maîtrise parfaitement le
+                protocole mais valide sans discernement des transactions destructrices possède une techné sans
+                phronèsis — un savoir-faire sans sagesse pratique. MacIntyre précise que les biens internes de
+                la pratique (l'excellence du réseau) valent davantage que les biens externes (les gas fees) ;
+                Confucius y ajoute l'exigence d'harmonie ; Comte-Sponville rappelle que la politesse — reconnaître
+                l'autre derrière chaque adresse — est la première vertu sans laquelle aucune autre ne s'exerce.</p>
+
+            <p>L'<strong>Utilitarisme</strong> apporte ensuite un calcul impitoyable. Bentham pèse les plaisirs
+                et les douleurs selon sept critères — et le bilan, quand une transaction finance un trafic
+                d'êtres humains, est sans appel : l'étendue des souffrances écrase le montant des gas fees.
+                Mill enrichit ce calcul en distinguant plaisirs supérieurs (confiance dans le réseau, bien
+                commun) et plaisirs inférieurs (profit immédiat), et propose l'utilitarisme de la règle :
+                une norme collective partagée par tous les validateurs maximise l'utilité globale mieux
+                qu'un calcul transaction par transaction. Nozick, enfin, rappelle que la satisfaction tirée
+                d'une récompense gagnée dans l'indifférence morale n'est qu'une illusion — comme la
+                machine à expérience.</p>
+
+            <p><strong>Kant</strong> tranche la question sur le plan du devoir. La neutralité technique ne
+                constitue pas une défense morale suffisante. Dès lors qu'un validateur participe à une chaîne
+                causale qui réduit des êtres humains à l'état de marchandises, il engage sa responsabilité
+                déontologique. Benjamin Constant nuance : la neutralité n'est due qu'à ceux qui ont droit
+                à elle — pas aux acteurs criminels. Le principisme de Beauchamp et Childress opérationnalise
+                cette exigence : autonomie des utilisateurs légitimes, non-malfaisance, justice.</p>
+
+            <p><strong>Heidegger</strong>, <strong>Simondon</strong> et l'<strong>Ubuntu</strong> convergent
+                enfin sur une même intuition : la responsabilité n'est ni individuelle ni purement technique
+                — elle est communautaire et systémique. Heidegger avertit que la blockchain dissout la
+                responsabilité par construction, instaurant une anesthésie du jugement moral. Simondon répond
+                par l'éthique de la régulation : le validateur est un régulateur du milieu associé, non un
+                automate. L'Ubuntu complète : « je suis parce que nous sommes » — réduire son rôle à
+                l'exécution mécanique d'un protocole, c'est déjà faillir à une responsabilité morale réelle.</p>
+
+            <div class="cadre" style="cursor: default;">
+                <h3 class="mb-4">Synthèse</h3>
+                <p>Ces voix s'articulent en une réponse à plusieurs niveaux. Aristote pose la question de la finalité :
+                    toute techné doit être orientée par la phronèsis vers le bien commun, et les biens internes de
+                    la pratique priment sur les biens externes. L'utilitarisme apporte un calcul : le bilan est négatif
+                    dès lors que les souffrances causées dépassent les gas fees encaissés — et une règle collective
+                    maximise l'utilité mieux que le calcul individuel. Kant identifie l'exigence déontologique —
+                    des normes universalisables, nuancées par Constant (la neutralité n'est due qu'aux acteurs légitimes)
+                    et opérationnalisées par le principisme. Heidegger avertit que la blockchain dissout structurellement
+                    la responsabilité. Simondon et Ubuntu identifient la posture : le validateur est un régulateur
+                    et un membre d'une communauté, jamais un simple automate. Buterin et Kirchschlaeger ancrent
+                    ces positions dans la réalité technique : la gouvernance protocolaire collective est le seul
+                    lieu où une éthique blockchain peut s'incarner durablement.</p>
+                <p class="mb-4">La responsabilité des mineurs et des validateurs existe, mais elle n'est pas
+                    individuelle : elle est <strong>collective et systémique</strong>. Elle ne se manifeste pas
+                    dans la validation ou le rejet de telle transaction, mais dans le choix de quels protocoles
+                    soutenir, de quelles normes intégrer au code, et de quel réseau construire ensemble.
+                    En ce sens, l'éthique blockchain n'est pas une question technique — c'est une question de
+                    philosophie politique sur la responsabilité des architectes invisibles de nos nouveaux
+                    espaces publics numériques.</p>
+
+                <div class="row g-3">
+                    <div class="col-md col-sm-6">
+                        <div class="summary-card" style="background: rgba(125,90,0,0.06);">
+                            <div class="fw-bold mb-2" style="color: #7d5a00;">Aristote</div>
+                            <p class="small mb-0">La techné sans phronèsis est aveugle. Le validateur
+                                vertueux oriente son savoir-faire vers les biens internes de la pratique
+                                et le bien commun de la polis numérique.</p>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="summary-card" style="background: rgba(211,84,0,0.06);">
+                            <div class="fw-bold mb-2" style="color: #d35400;">Utilitarisme</div>
+                            <p class="small mb-0">Le calcul est sans appel : l'étendue des souffrances causées
+                                dépasse les gas fees. Une règle collective maximise l'utilité globale.</p>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="summary-card" style="background: rgba(30,132,73,0.06);">
+                            <div class="fw-bold mb-2" style="color: #1e8449;">Kant</div>
+                            <p class="small mb-0">Des normes universalisables qui protègent la dignité humaine.
+                                La neutralité n'est due qu'à ceux qui ont droit à elle (Constant).</p>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="summary-card" style="background: rgba(192,57,43,0.06);">
+                            <div class="fw-bold mb-2" style="color: #c0392b;">Heidegger</div>
+                            <p class="small mb-0">La blockchain dissout la responsabilité par construction.
+                                L'anesthésie morale est structurelle — le protocole remplace le jugement.</p>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="summary-card" style="background: rgba(36,113,163,0.06);">
+                            <div class="fw-bold mb-2" style="color: #2471a3;">Simondon</div>
+                            <p class="small mb-0">Le validateur régule le milieu associé par la culture
+                                technique, jamais simple automate d'une boîte noire.</p>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="summary-card" style="background: rgba(125,60,152,0.06);">
+                            <div class="fw-bold mb-2" style="color: #7d3c98;">Ubuntu</div>
+                            <p class="small mb-0">Je suis parce que nous sommes. La responsabilité est
+                                communautaire et relationnelle.</p>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="summary-card" style="background: rgba(85,85,85,0.06);">
+                            <div class="fw-bold mb-2" style="color: #555;">Buterin &amp; Kirchschlaeger</div>
+                            <p class="small mb-0">La gouvernance protocolaire collective est le seul lieu
+                                où une éthique blockchain peut s'incarner durablement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- ═══ SOURCES ═══ -->
+        <section id="sources">
+            <h2>Sources</h2>
+            <div class="mt-4 content-text">
+                <p>Les réflexions présentées s'appuient sur les ouvrages et articles suivants :</p>
+                <ul>
+                    <li>
+                        <strong>Aristote.</strong>
+                        <em>Éthique à Nicomaque.</em> Trad. J. Tricot, Vrin, 1990.
+                    </li>
+                    <li>
+                        <strong>Bentham, J. (1789).</strong>
+                        <em>Introduction aux principes de morale et de législation.</em> Trad. E. de Champs, Vrin, 2011.
+                    </li>
+                    <li>
+                        <strong>Mill, J.S. (1863).</strong>
+                        <em>L'Utilitarisme.</em> Trad. G. Tanesse, Flammarion.
+                    </li>
+                    <li>
+                        <strong>Kant, I. (1785).</strong>
+                        <em>Fondements de la métaphysique des mœurs.</em> Trad. V. Delbos, Delagrave.
+                    </li>
+                    <li>
+                        <strong>Constant, B. (1797).</strong>
+                        <em>Des réactions politiques.</em> (Chap. VIII, sur le devoir de vérité.) Flammarion.
+                    </li>
+                    <li>
+                        <strong>Heidegger, M. (1954).</strong>
+                        <em>La Question de la technique.</em> In Essais et conférences. Gallimard.
+                    </li>
+                    <li>
+                        <strong>Simondon, G. (1958).</strong>
+                        <em>Du mode d'existence des objets techniques.</em> Aubier.
+                    </li>
+                    <li>
+                        <strong>MacIntyre, A. (1981).</strong>
+                        <em>After Virtue.</em> University of Notre Dame Press.
+                    </li>
+                    <li>
+                        <strong>Beauchamp, T.L. &amp; Childress, J.F. (2019).</strong>
+                        <em>Principles of Biomedical Ethics.</em> 8e éd. Oxford University Press.
+                    </li>
+                    <li>
+                        <strong>Comte-Sponville, A. (1995).</strong>
+                        <em>Petit traité des grandes vertus.</em> PUF.
+                    </li>
+                    <li>
+                        <strong>Kirchschlaeger, P.G. (2024).</strong>
+                        <em>Blockchain Ethics.</em> Philosophies, 9(1), 2.
+                        <a href="https://doi.org/10.3390/philosophies9010002" target="_blank"
+                            style="color: var(--accent-color);">Consulter l'article</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- ═══ LEXIQUE ═══ -->
+        <section id="lexique">
+            <div class="text-center mb-5">
+                <h2>Lexique</h2>
+                <p class="text-muted">Les termes blockchain utilisés dans ce débat</p>
+            </div>
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Adresse</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Identifiant public d'un portefeuille, généré par cryptographie. Sur Ethereum, elle ressemble à : <code>0x742d35Cc…</code> C'est ce qui remplace l'identité humaine dans la blockchain — une chaîne de caractères, pas un nom.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Bestand</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Terme heideggerien désignant les "stocks de ressources" mis à disposition de la technique. Dans la blockchain, identité, confiance et vérité deviennent des Bestände — des matières premières calculables plutôt que des dimensions humaines.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Bloc</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Unité de base de la blockchain. Chaque bloc contient un lot de transactions validées, un horodatage et le hash du bloc précédent — c'est ce lien cryptographique qui forme la "chaîne".</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Blockchain</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Registre distribué, partagé entre tous les participants d'un réseau, sans autorité centrale. Chaque entrée est cryptographiquement liée à la précédente, rendant toute falsification détectable par l'ensemble du réseau.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">"Code is Law"</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Principe selon lequel le code du protocole fait office de loi — sans interprétation possible ni recours à une autorité humaine. Lawrence Lessig l'avait théorisé en 1999 ; la blockchain en a fait une réalité opérationnelle.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Consensus</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Mécanisme par lequel les nœuds d'un réseau s'accordent sur l'état valide du registre, sans autorité centrale pour arbitrer. Le Proof of Work et le Proof of Stake sont deux façons différentes d'y parvenir.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">DAO</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Organisation Autonome Décentralisée. Structure dont les règles de gouvernance sont encodées dans des smart contracts. Il n'y a pas de dirigeant — les décisions se prennent par vote des détenteurs de tokens. Le hack du DAO en 2016 est l'un des cas éthiques centraux de ce débat.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Décentralisation</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Absence d'autorité centrale unique. La validation des transactions et la conservation du registre sont réparties entre des milliers de nœuds indépendants dans le monde — c'est à la fois la promesse et le problème éthique de la blockchain.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Fork</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Modification du protocole. Un <em>hard fork</em> crée une rupture permanente — deux chaînes incompatibles naissent (c'est ce qui a produit Ethereum Classic après le hack du DAO). Un <em>soft fork</em> est rétrocompatible avec l'ancienne version.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Gas fees</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Frais de transaction payés par l'utilisateur pour rémunérer le validateur et couvrir le coût de calcul de l'opération. Ils varient selon la congestion du réseau — et constituent la principale source de revenus des mineurs et validateurs.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Gestell</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Terme heideggerien pour l'arraisonnement : le mode de dévoilement techniciste du monde qui réduit tout à ce qui peut être optimisé et mesuré. Dans ce projet, le protocole blockchain est analysé comme un Gestell — un dispositif qui recadre le réel en termes de stocks et de calcul.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Hash</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Empreinte cryptographique d'une donnée. La moindre modification de l'entrée produit un hash radicalement différent. C'est ce mécanisme qui rend la falsification d'un bloc détectable immédiatement par tout le réseau.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Immutabilité</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Une fois enregistrée, une transaction ne peut pas être modifiée ou supprimée. C'est à la fois la force de la blockchain — personne ne peut tricher rétroactivement — et la source de son problème éthique : une injustice encodée est une injustice permanente.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Ledger distribué</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Le registre partagé entre tous les nœuds du réseau. Chaque participant en conserve une copie identique et à jour. C'est cette redondance qui rend la falsification quasi impossible — il faudrait modifier simultanément la majorité des copies.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Mineur</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Participant qui valide les transactions et crée de nouveaux blocs via le Proof of Work. Il résout des problèmes mathématiques complexes en échange d'une récompense en cryptomonnaie. C'est un acteur central du débat éthique de ce projet.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Mixeur</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Service qui mélange plusieurs transactions pour brouiller leur traçabilité. Tornado Cash en est l'exemple le plus connu — sanctionné par l'OFAC en août 2022 pour avoir facilité le blanchiment de 455 millions de dollars issus de cyberattaques nord-coréennes.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Nœud</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Ordinateur participant au réseau blockchain. Il stocke une copie du ledger et participe à la validation des transactions. Plus il y a de nœuds indépendants, plus le réseau résiste à la censure et à la corruption.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Permissionless</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Caractère ouvert d'un réseau : n'importe qui peut rejoindre et y effectuer des transactions sans demander d'autorisation à une entité centrale. C'est l'une des promesses fondatrices de la blockchain — et ce qui rend son contrôle éthique si difficile.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Portefeuille (Wallet)</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Interface permettant de gérer ses actifs blockchain. Contient en réalité des clés cryptographiques — les actifs eux-mêmes restent sur la blockchain. Perdre sa clé privée, c'est perdre l'accès à ses fonds définitivement.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Proof of Stake (PoS)</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Mécanisme de consensus où les validateurs sont sélectionnés en proportion de leur mise (staking). Beaucoup moins énergivore que le PoW. Ethereum a basculé vers le PoS en septembre 2022 ("The Merge"), réduisant sa consommation de ~99,5 %.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Proof of Work (PoW)</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Mécanisme de consensus où les mineurs s'affrontent dans une course de calcul pour valider les blocs. Très sécurisé mais extrêmement énergivore — Bitcoin consomme autant que certains pays. C'est le modèle d'origine de la blockchain.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Slashing</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Sanction automatique appliquée aux validateurs malveillants dans un réseau PoS : une partie de leur mise est confisquée par le protocole. Pour Simondon, c'est un exemple de morale devenue schème technique — l'honnêteté comme condition de stabilité interne du système.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Smart contract</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Programme informatique déployé sur la blockchain, qui s'exécute automatiquement quand des conditions prédéfinies sont remplies. Il n'y a pas d'intermédiaire — le code est son propre notaire. C'est lui qui permet les DAO, la DeFi et les NFT.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Staking</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Action de "mettre en jeu" des cryptomonnaies pour participer à la validation des transactions dans un réseau PoS. En contrepartie, le validateur perçoit des récompenses. C'est aussi ce qui le rend vulnérable au slashing en cas de comportement malveillant.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cadre h-100" style="padding: 20px 24px;">
+                        <div style="color: var(--primary-color); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 6px;">Validateur</div>
+                        <p class="small mb-0" style="color: #4a4a4a;">Dans un réseau Proof of Stake, participant qui confirme les transactions en mettant en jeu des cryptomonnaies (staking). C'est l'équivalent du mineur dans un réseau PoW — et l'acteur central du débat éthique de ce projet : jusqu'où va sa responsabilité morale ?</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- ═══ ÉQUIPE ═══ -->
+        <section id="equipe" class="mb-5">
+            <div class="text-center mb-5">
+                <h2>L'Équipe</h2>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-4">
+                    <div class="cadre text-center" style="cursor: default;">
+                        <div class="fw-bold fs-5">Louis Pluquet</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cadre text-center" style="cursor: default;">
+                        <div class="fw-bold fs-5">Gabriel Mroue</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="cadre text-center" style="cursor: default;">
+                        <div class="fw-bold fs-5">Romane Sogalow</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">Projet Éthique — Blockchain &amp; Responsabilité — 2026</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
